@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box-container">
+            <div class="box" id="myBox"></div>
+            <button onclick="toggleWidth()">></button>
+        </div>
+        <div class="main-element" id="mainElement">
+            <div class="flex-box" id="myFlexBox">
+                <div class="cards">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
+                <button onclick="toggleFlexWidth()"><img src="info.svg" alt=""></button>
+            </div>
+            <div class="info" id="myInfo"></div>
+        </div>
+    </div>
+
+    <script>
+        let isExpanded = false;
+        let isFlexReduced = false;
+
+        const box = document.getElementById('myBox');
+        const button = document.querySelector('button');
+        const flexBox = document.getElementById('myFlexBox');
+        const mainElement = document.getElementById('mainElement');
+        const infoDiv = document.getElementById('myInfo');
+
+        function toggleWidth() {
+            isExpanded = !isExpanded;
+            box.style.width = isExpanded ? '280px' : '60px';
+            button.textContent = isExpanded ? '<' : '>';
+        }
+
+        function toggleFlexWidth() {
+            isFlexReduced = !isFlexReduced;
+            if (isFlexReduced) {
+                flexBox.style.width = '48%';
+                infoDiv.style.flex = '1';
+                mainElement.style.gap = '25px';
+            } else {
+                flexBox.style.width = '100%'; // Set the width back to its original value
+                infoDiv.style.flex = '0'; // Reset the flex property
+                mainElement.style.gap = '0'; // Reset the gap property
+            }
+        }
+    </script>
+</body>
+</html>
